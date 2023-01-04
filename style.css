@@ -1,0 +1,47 @@
+.navbar {
+  background-color: #557153;
+}
+
+.jumbotron {
+  background-color: #e6e5a3;
+  padding-top: 6rem;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+.margin {
+  margin-top: 70px;
+}
+
+#projects {
+  background-color: #e6e5a3;
+}
+
+.skill {
+  width: 350px;
+  height: 300px;
+  padding-top: 20px;
+  border-radius: 20px;
+}
+
+.skill img {
+  width: 80px;
+}
+
+footer {
+  background-color: #557153;
+}
+
+@media screen and (max-width: 1000px) {
+  .margin {
+    margin-top: 5px;
+  }
+  .ctr {
+    margin-left: 85px;
+  }
+  .skill {
+    margin-left: 85px;
+  }
+}
