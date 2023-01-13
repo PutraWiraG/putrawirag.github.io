@@ -19,8 +19,17 @@ section {
   background-color: #e6e5a3;
 }
 
-#skil img {
+.mySkills {
+  transform-style: preserve-3d;
+}
+
+.mySkills img {
   width: 80px;
+  transform: translate3d(0, 0, 200px);
+}
+
+.mySkills h5 {
+  transform: translate3d(0, 0, 100px);
 }
 
 footer {
