@@ -80,7 +80,7 @@ body {
     animation: naikTurun 3s infinite ease-in-out;
 }
 .pigora-bawah {
-    animation: TurunNaik 3s infinite ease-in-out reverse;
+    animation: TurunNaik 3s infinite ease-in-out;
 }
 
 
