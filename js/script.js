@@ -1,7 +1,10 @@
 let btnOpen = document.querySelector('.btn-open');
 let section2 = document.querySelector('.section2');
+let audio = document.getElementById('background-audio');
 
 btnOpen.addEventListener('click', () => {
+
+    audio.play().catch(error => console.log("Autoplay gagal: ", error));
 
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
