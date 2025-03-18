@@ -1,0 +1,62 @@
+@import url('https://fonts.cdnfonts.com/css/javassoul');
+
+.text-java {
+    font-family: 'Javassoul', sans-serif;
+}
+
+body {
+    background-color: #E4E0E1;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0);  }
+    50% { transform: translateY(-15px);  }
+}
+
+
+.floating-animation {
+    animation: floating 2s ease-in-out infinite;
+}
+
+.floating-wayang {
+    animation: floating 2s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.floating-wayang2 {
+    animation: floating 2s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+
+/* Section Quotes */
+
+@keyframes swing {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+}
+
+@keyframes swing-kanan {
+    0%, 100% {
+        transform: translateX(15px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+}
+
+.janur-kiri{
+    animation: swing-kanan 3s ease-in-out infinite;
+} 
+.janur-kanan {
+    animation: swing 3s ease-in-out infinite;
+}
+
+
+
+
+
