@@ -57,6 +57,34 @@ body {
 }
 
 
+/* Section Mempelai */
+@keyframes naikTurun {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px); /* Naik 15px */
+    }
+}
+
+@keyframes TurunNaik {
+    0%, 100% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0); /* Naik 15px */
+    }
+}
+
+.pigora-atas{
+    animation: naikTurun 3s infinite ease-in-out;
+}
+.pigora-bawah {
+    animation: TurunNaik 3s infinite ease-in-out reverse;
+}
+
+
+
 
 
 
