@@ -22,3 +22,11 @@ btnOpen.addEventListener('click', () => {
         });
     }, 300);
 });
+
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        audio.pause(); 
+    } else {
+        audio.play().catch(error => console.log("Autoplay gagal: ", error));
+    }
+});
