@@ -30,3 +30,14 @@ document.addEventListener('visibilitychange', () => {
         audio.play().catch(error => console.log("Autoplay gagal: ", error));
     }
 });
+
+const targetDate = new Date("March 31, 2025 12:00:00");
+
+function updateCountdown() {
+    const timeLeft = countdown(targetDate);
+    document.getElementById("days").innerText = timeLeft.days;
+    document.getElementById("hours").innerText = timeLeft.hours;
+    document.getElementById("minutes").innerText = timeLeft.minutes;
+    document.getElementById("seconds").innerText = timeLeft.seconds;
+}
+setInterval(updateCountdown, 1000);
