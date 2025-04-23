@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Birthday Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
+
+  </head>
+  <body class="flex flex-col items-center relative">
+
+    <audio id="background-audio">
+        <source src="asset/backsound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <nav class="navbar-bottom bg-red-200 absolute z-40 w-[80vw] md:w-[55vw] lg:max-w-[450px] bottom-5 rounded-full overflow-x-auto hide-scrollbar hidden">
+        <div class="flex items-center whitespace-nowrap w-max">
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-home text-sm"></i>
+                <p class="text-[12px] font-medium">Opening</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="welcome">
+                <i class="fas fa-heart text-sm"></i>
+                <p class="text-[12px] font-medium">Welcome</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="event">
+                <i class="fas fa-clock text-sm"></i>
+                <p class="text-[12px] font-medium">Event</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-map-signs text-sm"></i>
+                <p class="text-[12px] font-medium">Maps</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-comment-dots text-sm"></i>
+                <p class="text-[12px] font-medium">RSVP</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-gift text-sm"></i>
+                <p class="text-[12px] font-medium">Gift</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-star text-sm"></i>
+                <p class="text-[12px] font-medium">Thanks</p>
+            </div>
+        </div>        
+    </nav>
+    
+    <section id="section-opening" class="opening relative bg-[#F8F4E1] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center">
+
+        
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-5"></div>
+        
+        <div class="content h-[98vh] w-[96%] border border-[#FEBA17] flex flex-col justify-center items-center">
+            <img src="asset/kado.png" class="w-[100px] delay-500" data-anim="zoom-in">
+
+            <div class="text-center delay-200" data-anim="fade-up">
+                <p class="text-poppins">Join us for a</p>
+                <h1 class="text-5xl font-bold text-poppins">BIRTHDAY</h1>
+                <h2 class="text-4xl text-latin mt-[-20px] text-[#FEBA17]">Party</h2>
+                <p class="text-poppins text-[12px] mt-2">Celebrating</p>
+                <h1 class="text-6xl text-latin mt-2">"Your Name"</h1>
+            </div>
+
+            <div class="invitation mt-[40px] mb-[40px] bg-[rgba(254,186,23,0.7)] backdrop-blur-xl py-4 px-10 text-center rounded-md delay-300 z-30" data-anim="zoom-in">
+                <p class="text-sm text-[#000]">Kepada Yth.</p>
+                <h5 class="font-bold">Tamu Undangan</h5>
+            </div>  
+            
+            <button class="p-2 bg-[#74512D] text-[12px] rounded-full font-bold text-poppins text-white btn-open cursor-pointer z-30">Open Invitation</button>
+
+        </div>
+
+        <div class="component-bawah absolute bottom-0 left-0 mb-[-40px] ml-[-80px] animate-float z-20">
+            <img src="asset/ballon-bawah.png" class="w-[300px]">
+        </div>
+
+    </section>
+
+    <section id="section-welcome" class="welcome absolute top-0 bg-[#F8F4E1] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none">
+    <!-- <section id="section-welcome" class="welcome absolute top-0 bg-[#F8F4E1] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center"> -->
+
+        
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-5"></div>
+
+        <img src="asset/ballon-love.png" class="w-[80px] absolute top-[10%] left-[10%] animate-float delay-200">
+        <img src="asset/ballon-love.png" class="w-[60px] absolute top-0 right-[5%] mt-[-20px] animate-float delay-500">
+        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[10%] right-[10%] animate-float delay-500">
+        <img src="asset/ballon-love.png" class="w-[90px] absolute bottom-[60%] right-0 mr-[-20px] animate-float delay-400">
+        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[30%] left-0 ml-[-20px] animate-float delay-400">
+        
+        <div class="content h-[98vh] w-[96%] border border-[#FEBA17] flex flex-col justify-center items-center">
+
+            <img src="asset/atas.png" class="w-[300px] delay-200 mb-[-80px]" data-anim="fade-down">
+            
+            <div data-anim="zoom-in" class="delay-300 text-center">
+                <h2 class="text-md text-poppins">Come To The Birthday Party</h2>
+                <h1 class="text-6xl text-latin mt-3">"Your Name"</h1>
+            </div>
+            
+            <img src="asset/bawah.png" class="w-[300px] delay-200 mt-[-80px]" data-anim="fade-up">
+
+        </div>
+
+
+    </section>
+
+    <section id="section-event" class="event absolute top-0 bg-[#F8F4E1] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none">
+
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-5"></div>
+
+        <div class="content h-[98vh] w-[96%] border border-[#FEBA17] flex flex-col justify-center items-center">
+
+            
+            <div data-anim="zoom-in" class="delay-300 text-center">
+                <h2 class="text-md text-poppins">Hallo</h2>
+            </div>
+            
+
+        </div>
+
+    </section>
+    
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false, // Atur ke false agar animasi bisa diulang tiap kali muncul
+        });
+    </script>
+    <script src="script/script.js"></script>
+  </body>
+</html>
