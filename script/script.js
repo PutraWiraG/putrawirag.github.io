@@ -7,7 +7,7 @@ const sections = {
 
 // Fungsi untuk aktifkan section & menu
 function activateSection(target) {
-    boxes.forEach(b => b.classList.remove('bg-[#FFF085]', 'text-black'));
+    boxes.forEach(b => b.classList.remove('bg-[#FFFF]', 'text-black'));
 
     Object.values(sections).forEach(section => {
         section.classList.add('opacity-0', 'pointer-events-none');
@@ -18,7 +18,7 @@ function activateSection(target) {
     const selectedSection = sections[target];
 
     if (selectedBox && selectedSection) {
-        selectedBox.classList.add('bg-[#FFF085]', 'text-black');
+        selectedBox.classList.add('bg-[#FFFF]', 'text-black');
         selectedSection.classList.remove('opacity-0', 'pointer-events-none');
         selectedSection.classList.add('opacity-100');
 
@@ -74,7 +74,7 @@ const navbarBottom = document.querySelector('.navbar-bottom');
 let audio = document.getElementById('background-audio');
 
 btnOpen.addEventListener("click", () => {
-    audio.play().catch(error => console.log("Autoplay gagal: ", error));
+    // audio.play().catch(error => console.log("Autoplay gagal: ", error));
 
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
@@ -89,10 +89,10 @@ btnOpen.addEventListener("click", () => {
     activateSection('welcome');
 });
 
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        audio.pause(); 
-    } else {
-        audio.play().catch(error => console.log("Autoplay gagal: ", error));
-    }
-});
+// document.addEventListener('visibilitychange', () => {
+//     if (document.hidden) {
+//         audio.pause(); 
+//     } else {
+//         audio.play().catch(error => console.log("Autoplay gagal: ", error));
+//     }
+// });
