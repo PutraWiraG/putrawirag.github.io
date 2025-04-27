@@ -55,9 +55,9 @@
     <section id="section-opening" class="opening relative bg-[#FC8EAC] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center">
 
         
-        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-[20%]"></div>
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen opacity-[20%]"></div>
         
-        <div class="content h-[98vh] w-[96%] border border-[#FFFF] flex flex-col justify-center items-center z-20">
+        <div class="content h-[98vh] w-[96%] border border-[#FFFF] flex flex-col justify-center items-center">
             <img src="asset/kado.png" class="w-[80px] delay-500" data-anim="zoom-in">
 
             <div class="text-center delay-200" data-anim="fade-up">
@@ -68,16 +68,16 @@
                 <h1 class="text-6xl text-latin mt-2">"Your Name"</h1>
             </div>
 
-            <div class="invitation mt-[40px] mb-[40px] bg-[rgba(255,255,255,0.7)] backdrop-blur-xl py-4 px-10 text-center rounded-md delay-300 z-30" data-anim="zoom-in">
+            <div class="invitation mt-[40px] mb-[40px] bg-[rgba(255,255,255,0.7)] backdrop-blur-xl py-4 px-10 text-center rounded-md delay-300 z-40" data-anim="zoom-in">
                 <p class="text-sm text-[#000]">Kepada Yth.</p>
                 <h5 class="font-bold">Tamu Undangan</h5>
             </div>  
             
-            <button class="p-2 bg-[#74512D] text-[12px] rounded-full font-bold text-poppins text-white btn-open cursor-pointer z-30">Open Invitation</button>
+            <button class="p-2 bg-[#74512D] text-[12px] rounded-full font-bold text-poppins text-white btn-open cursor-pointer z-40">Open Invitation</button>
 
         </div>
 
-        <div class="component-bawah absolute bottom-0 left-0 mb-[-10px] ml-[-80px] animate-float z-20">
+        <div class="component-bawah absolute bottom-0 left-0 mb-[-10px] ml-[-80px] animate-float z-30">
             <img src="asset/ballon-bawah.png" class="w-[300px]">
         </div>
 
@@ -87,15 +87,15 @@
     <!-- <section id="section-welcome" class="welcome absolute top-0 bg-[#F8F4E1] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center"> -->
 
         
-        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-[20%]"></div>
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen opacity-[20%]"></div>
 
-        <img src="asset/ballon-love.png" class="w-[80px] absolute top-[10%] left-[10%] animate-float delay-200 z-30">
-        <img src="asset/ballon-love.png" class="w-[60px] absolute top-0 right-[5%] mt-[-20px] animate-float delay-500 z-30">
-        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[10%] right-[10%] animate-float delay-500 z-30">
-        <img src="asset/ballon-love.png" class="w-[90px] absolute bottom-[60%] right-0 mr-[-20px] animate-float delay-400 z-30">
-        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[30%] left-0 ml-[-20px] animate-float delay-400 z-30">
+        <img src="asset/ballon-love.png" class="w-[80px] absolute top-[10%] left-[10%] animate-float delay-200">
+        <img src="asset/ballon-love.png" class="w-[60px] absolute top-0 right-[5%] mt-[-20px] animate-float delay-500">
+        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[10%] right-[10%] animate-float delay-500">
+        <img src="asset/ballon-love.png" class="w-[90px] absolute bottom-[60%] right-0 mr-[-20px] animate-float delay-400">
+        <img src="asset/ballon-love.png" class="w-[70px] absolute bottom-[30%] left-0 ml-[-20px] animate-float delay-400">
         
-        <div class="content h-[98vh] w-[96%] border border-[#FFFF] flex flex-col justify-center items-center z-20">
+        <div class="content h-[98vh] w-[96%] border border-[#FFFF] flex flex-col justify-center items-center">
 
             <img src="asset/atas.png" class="w-[300px] delay-200 mb-[-80px]" data-anim="fade-down">
             
@@ -119,7 +119,15 @@
 
             
             <div data-anim="zoom-in" class="delay-300 text-center">
-                <h2 class="text-md text-poppins">Hallo</h2>
+                <h2 class="text-4xl text-latin">Birthday Party</h2>
+                <p class="text-md text-poppins mt-5 text-white">Minggu, 27 April 2025</p>
+                <p class="text-md text-poppins mt-2 text-white">Pukul 19:00 WIB</p>
+                
+                <div id="countdown" class="mt-5"></div>
+                <h2 class="text-4xl text-latin mt-5">Location</h2>
+                <p class="text-md text-poppins mt-5 text-white">Jl. Ir. Soekarno no 30 Surabaya, Jawa Timur.</p>
+                
+
             </div>
             
 
@@ -135,5 +143,41 @@
         });
     </script>
     <script src="script/script.js"></script>
+    <script>
+        // Set the target date (tanggal yang diinginkan untuk countdown)
+        const targetDate = new Date("May 5, 2025 00:00:00").getTime();
+
+        // Create a countdown using the countdown.js library
+        const timer = countdown(
+            targetDate, 
+            function(ts) {
+                // Update each part of the countdown (days, hours, minutes, seconds)
+                document.getElementById("countdown").innerHTML = `
+                    <div class="count-box">
+                        <span>${ts.days}</span>
+                        <div class="label">Days</div>
+                    </div>
+                    <div class="count-box">
+                        <span>${ts.hours}</span>
+                        <div class="label">Hours</div>
+                    </div>
+                    <div class="count-box">
+                        <span>${ts.minutes}</span>
+                        <div class="label">Minutes</div>
+                    </div>
+                    <div class="count-box">
+                        <span>${ts.seconds}</span>
+                        <div class="label">Seconds</div>
+                    </div>
+                `;
+            },
+            countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS
+        );
+
+        // Handle expired countdown
+        timer.onComplete(function() {
+            document.getElementById("countdown").innerHTML = "<div class='count-box'>EXPIRED</div>";
+        });
+    </script>
   </body>
 </html>
