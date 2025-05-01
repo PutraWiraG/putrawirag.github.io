@@ -3,6 +3,9 @@ const sections = {
     opening: document.getElementById('section-opening'),
     welcome: document.getElementById('section-welcome'),
     event: document.getElementById('section-event'),
+    maps: document.getElementById('section-maps'),
+    gift: document.getElementById('section-gift'),
+    thanks: document.getElementById('section-thanks'),
 };
 
 // Fungsi untuk aktifkan section & menu

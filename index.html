@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   </head>
   <body class="flex flex-col items-center relative">
@@ -33,19 +36,19 @@
                 <i class="fas fa-clock text-sm"></i>
                 <p class="text-[12px] font-medium">Event</p>
             </div>
-            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="maps">
                 <i class="fas fa-map-signs text-sm"></i>
                 <p class="text-[12px] font-medium">Maps</p>
             </div>
-            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+            <!-- <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
                 <i class="fas fa-comment-dots text-sm"></i>
                 <p class="text-[12px] font-medium">RSVP</p>
-            </div>
-            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+            </div> -->
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="gift">
                 <i class="fas fa-gift text-sm"></i>
                 <p class="text-[12px] font-medium">Gift</p>
             </div>
-            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="thanks">
                 <i class="fas fa-star text-sm"></i>
                 <p class="text-[12px] font-medium">Thanks</p>
             </div>
@@ -133,6 +136,188 @@
 
         </div>
 
+        <script>
+            // Set the target date (tanggal yang diinginkan untuk countdown)
+            const targetDate = new Date("May 5, 2025 00:00:00").getTime();
+
+            // Create a countdown using the countdown.js library
+            const timer = countdown(
+                targetDate, 
+                function(ts) {
+                    // Update each part of the countdown (days, hours, minutes, seconds)
+                    document.getElementById("countdown").innerHTML = `
+                        <div class="count-box">
+                            <span>${ts.days}</span>
+                            <div class="label">Days</div>
+                        </div>
+                        <div class="count-box">
+                            <span>${ts.hours}</span>
+                            <div class="label">Hours</div>
+                        </div>
+                        <div class="count-box">
+                            <span>${ts.minutes}</span>
+                            <div class="label">Minutes</div>
+                        </div>
+                        <div class="count-box">
+                            <span>${ts.seconds}</span>
+                            <div class="label">Seconds</div>
+                        </div>
+                    `;
+                },
+                countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS
+            );
+
+            // Handle expired countdown
+            timer.onComplete(function() {
+                document.getElementById("countdown").innerHTML = "<div class='count-box'>EXPIRED</div>";
+            });
+        </script>
+
+    </section>
+
+
+    <section id="section-maps" class="event absolute top-0 bg-[#FC8EAC] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none">
+
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-[20%]"></div>
+
+        <div class="content h-[98vh] w-[96%] border border-[#FFFFF] flex flex-col justify-center items-center z-20">
+
+            
+            <div data-anim="zoom-in" class="delay-300 text-center">
+
+                <h2 class="text-5xl text-latin text-black mb-5">Event Location</h2>
+                
+                <div id="map" class="box-maps w-[90vw] sm:w-[50vw] lg:w-[35vw] h-60 rounded-lg mb-4"></div>
+
+                <div class="flex justify-center">
+                    <button onclick="copyAddress()" class="bg-white text-black px-4 py-2 rounded-lg hover:bg-blue-600">
+                        Salin Alamat
+                    </button>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+        <script>
+
+            const latitude = 37.7749; 
+            const longitude = -122.4194; 
+    
+            var map = L.map('map').setView([latitude, longitude], 13);
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            L.marker([latitude, longitude]).addTo(map)
+                .bindPopup('Lokasi Acara')
+                .openPopup();
+    
+            function copyAddress() {
+                const address = 'Jl. Ir. Soekarno no 50A, Surabaya Jawa Timur';
+                navigator.clipboard.writeText(address).then(() => {
+                    alert("Alamat telah disalin!");
+                });
+            }
+        </script>
+
+    </section>
+
+    <section id="section-gift" class="event absolute top-0 bg-[#FC8EAC] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none">
+
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-[20%]"></div>
+
+        <div class="content h-[98vh] w-[96%] border border-[#FFFFF] flex flex-col justify-center items-center z-20">
+
+            
+            <div data-anim="zoom-in" class="delay-300 text-center flex flex-col items-center">
+
+                <h2 class="text-5xl text-black text-latin">Sign of Love</h2>
+                <p class="mt-4 text-poppins text-[12px] text-white">"Sebagai hadiah terbaik, kehadiran Anda sudah lebih dari cukup untuk merayakan momen istimewa ini bersama kami. Namun, jika Anda ingin memberikan sesuatu yang lebih, kami akan sangat menghargai setiap bentuk perhatian yang Anda berikan. Hadiah atau kado kecil yang penuh makna akan menjadi kenangan indah bagi kami di hari yang penuh kebahagiaan ini. Terima kasih atas dukungan dan kasih sayang yang Anda berikan!"</p>
+
+                <div class="box-btn w-full mt-5">
+                    <button class="px-7 py-2 bg-[#74512D] text-poppins text-white rounded-full btn-hadiah">Hadiah</button>
+                    <button class="px-7 py-2 bg-[#74512D] text-poppins text-white rounded-full btn-kado">Kirim Kado</button>
+                </div>
+
+                <div class="box-hadiah w-[90vw] sm:w-[50vw] lg:w-[35vw] flex justify-center items-center hidden">
+
+                    <div class="box-img w-[120px] h-[120px] sm:w-[200px] sm:h-[200px] overflow-hidden">
+                        <img src="asset/atm.png" class="w-full h-full object-cover">
+                    </div>
+                    <div class="box-text">
+                        <h2 class="text-poppins">ATM BCA : 1234567890</h2>
+                        <h2 class="text-poppins">Atas Nama : Jhon Doe</h2>
+                    </div>
+
+                </div>
+
+                <div class="box-kado w-[90vw] sm:w-[50vw] lg:w-[35vw] flex justify-center items-center hidden">
+                    
+                    <div class="box-img w-[120px] h-[120px] sm:w-[200px] sm:h-[200px] overflow-hidden">
+                        <img src="asset/kirim-kado.png" class="w-full h-full object-cover">
+                    </div>
+                    <div class="box-text">
+                        <h2 class="text-poppins">Anda Dapat Mengirim Kado Ke:</h2>
+                        <h2 class="text-poppins">Jl. Ir. Soekarno No 50A Surabaya, Jawa Timur</h2>
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+        </div>
+
+        <script>
+            const btnHadiah = document.querySelector('.btn-hadiah');
+            const btnKado = document.querySelector('.btn-kado');
+            const sectionHadiah = document.querySelector('.box-hadiah');
+            const sectionKado = document.querySelector('.box-kado');
+
+            btnHadiah.addEventListener('click', () => {
+
+                sectionHadiah.classList.remove('hidden');
+                sectionKado.classList.add('hidden');
+
+            });
+
+            btnKado.addEventListener('click', () => {
+
+                sectionHadiah.classList.add('hidden');
+                sectionKado.classList.remove('hidden');
+
+            });
+
+        </script>
+
+    </section>
+
+    <section id="section-thanks" class="event absolute top-0 bg-[#FC8EAC] w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none">
+
+        <div class="background absolute bg-[url('asset/background.png')] bg-cover bg-center w-full min-h-screen z-10 opacity-[20%]"></div>
+
+        <div class="content h-[98vh] w-[96%] border border-[#FFFFF] flex flex-col justify-center items-center z-20">
+
+            
+            <div data-anim="zoom-in" class="delay-300 text-center flex flex-col items-center">
+                <img src="asset/atas.png" class="w-[300px] delay-200 mb-[-80px]" data-anim="fade-down">
+
+                <p class="text-[12px] text-poppins text-white">"Terima kasih atas dukungan dan perhatian yang selalu Anda berikan. Kami sangat berharap Anda dapat bergabung bersama kami untuk merayakan momen spesial ini. Kehadiran Anda akan membuat acara ini semakin berarti dan penuh kebahagiaan!"</p>
+
+                <h5 class="text-poppins text-black text-md mt-5">Best Regards</h5>
+                <h2 class="text-white text-latin text-5xl">"Your Name"</h2>
+                
+                <img src="asset/bawah.png" class="w-[300px] delay-200 mt-[-80px]" data-anim="fade-up">
+            </div>
+
+            
+
+        </div>
+
+
     </section>
     
 
@@ -143,41 +328,6 @@
         });
     </script>
     <script src="script/script.js"></script>
-    <script>
-        // Set the target date (tanggal yang diinginkan untuk countdown)
-        const targetDate = new Date("May 5, 2025 00:00:00").getTime();
-
-        // Create a countdown using the countdown.js library
-        const timer = countdown(
-            targetDate, 
-            function(ts) {
-                // Update each part of the countdown (days, hours, minutes, seconds)
-                document.getElementById("countdown").innerHTML = `
-                    <div class="count-box">
-                        <span>${ts.days}</span>
-                        <div class="label">Days</div>
-                    </div>
-                    <div class="count-box">
-                        <span>${ts.hours}</span>
-                        <div class="label">Hours</div>
-                    </div>
-                    <div class="count-box">
-                        <span>${ts.minutes}</span>
-                        <div class="label">Minutes</div>
-                    </div>
-                    <div class="count-box">
-                        <span>${ts.seconds}</span>
-                        <div class="label">Seconds</div>
-                    </div>
-                `;
-            },
-            countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS
-        );
-
-        // Handle expired countdown
-        timer.onComplete(function() {
-            document.getElementById("countdown").innerHTML = "<div class='count-box'>EXPIRED</div>";
-        });
-    </script>
+    
   </body>
 </html>
