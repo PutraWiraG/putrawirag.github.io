@@ -75,9 +75,10 @@ activateSection('opening');
 const btnOpen = document.querySelector('.btn-open');
 const navbarBottom = document.querySelector('.navbar-bottom');
 let audio = document.getElementById('background-audio');
+audio.volume = 0.8; 
 
 btnOpen.addEventListener("click", () => {
-    // audio.play().catch(error => console.log("Autoplay gagal: ", error));
+    audio.play().catch(error => console.log("Autoplay gagal: ", error));
 
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
@@ -92,10 +93,10 @@ btnOpen.addEventListener("click", () => {
     activateSection('welcome');
 });
 
-// document.addEventListener('visibilitychange', () => {
-//     if (document.hidden) {
-//         audio.pause(); 
-//     } else {
-//         audio.play().catch(error => console.log("Autoplay gagal: ", error));
-//     }
-// });
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        audio.pause(); 
+    } else {
+        audio.play().catch(error => console.log("Autoplay gagal: ", error));
+    }
+});
