@@ -4,7 +4,7 @@ const sections = {
     welcome: document.getElementById('section-welcome'),
     event: document.getElementById('section-event'),
     maps: document.getElementById('section-maps'),
-    gift: document.getElementById('section-gift'),
+    galeri: document.getElementById('section-galeri'),
     thanks: document.getElementById('section-thanks'),
 };
 
@@ -100,3 +100,11 @@ document.addEventListener('visibilitychange', () => {
         audio.play().catch(error => console.log("Autoplay gagal: ", error));
     }
 });
+
+function getQueryParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name); 
+}
+const guestName = getQueryParameter('name') || 'Guest';
+document.getElementById('tamu-undangan').textContent = guestName;
+
