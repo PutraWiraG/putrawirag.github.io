@@ -10,7 +10,7 @@ const sections = {
 
 // Fungsi untuk aktifkan section & menu
 function activateSection(target) {
-    boxes.forEach(b => b.classList.remove('bg-[#FFFF]', 'text-black'));
+    boxes.forEach(b => b.classList.remove('bg-[#FFFF]', 'color-black'));
 
     Object.values(sections).forEach(section => {
         section.classList.add('opacity-0', 'pointer-events-none');
@@ -21,7 +21,7 @@ function activateSection(target) {
     const selectedSection = sections[target];
 
     if (selectedBox && selectedSection) {
-        selectedBox.classList.add('bg-[#FFFF]', 'text-black');
+        selectedBox.classList.add('bg-[#FFFF]', 'color-black');
         selectedSection.classList.remove('opacity-0', 'pointer-events-none');
         selectedSection.classList.add('opacity-100');
 

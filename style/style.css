@@ -9,6 +9,10 @@
     font-family: "Poppins";
 }
 
+.color-black {
+  color: black !important;
+}
+
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
