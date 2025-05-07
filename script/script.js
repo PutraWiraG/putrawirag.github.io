@@ -80,12 +80,6 @@ audio.volume = 0.8;
 btnOpen.addEventListener("click", () => {
     audio.play().catch(error => console.log("Autoplay gagal: ", error));
 
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-            console.log(`Gagal masuk fullscreen: ${err.message}`);
-        });
-    }
-
     navbarBottom.classList.remove('hidden');
     btnOpen.classList.add('hidden');
 
